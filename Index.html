@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diario Emocional Creativo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+</head>
+<body>
+<!-- Encabezado del Diario Emocional -->
+<style>
+  header {
+    background-color: #000;
+    color: #ffcc00;
+    padding: 30px 20px;
+    font-size: 1.8rem;
+    text-align: center;
+    line-height: 1.6;
+    border-bottom: 2px solid #ff6f00;
+    font-family: 'Playfair Display', serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  }
+
+  header span {
+    color: #fff;
+    font-weight: 700;
+  }
+</style>
+
+<header>
+  <span>Diario Emocional Creativo</span><br>
+  Herramienta pedagógica
+</header>
+
+<style>
+  body {
+    background: #111;
+    color: #fff;
+    font-family: 'Comic Sans MS', cursive;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  #canvas-container {
+    margin: auto;
+    width: 100%;
+    max-width: 850px;
+    background: #fff;
+    border: 2px solid #ffcc00;
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    touch-action: none;
+  }
+
+  label, select, button {
+    margin: 4px;
+  }
+
+  button, select, input[type="color"], input[type="range"] {
+    font-size: 14px;
+    padding: 5px 8px;
+    background-color: #ffff00;
+    color: #111;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  button:hover, select:hover {
+    background-color: #e6b800;
+  }
+</style>
+
+
+
+</head>
+<body>
+  <section id="diario-creativo" style="padding: 20px;">
+    <h2 style="color: #ffcc00;">📖 Crea tu Diario Emocional</h2>
+    <p style="font-family: Georgia, serif; font-size: 15px; padding: 10px; line-height: 1.3; text-align: left;">
+  <strong>📝 Descripción:</strong><br>
+ Cada día trabajarás en una página distinta de tu diario emocional, expresando lo que sientes a través de dibujos, textos o imágenes.<br><br>
+
+  <strong>📌 Instrucciones:</strong><br>
+  1. Diseña tu <strong>Portada</strong> y <strong>Contraportada</strong>.<br>
+  2. Escribe y crea desde el <strong>Día 1</strong> hasta el <strong>Día 7</strong>.<br>
+  3. Agrega una <strong>Reflexión final</strong> sobre tu experiencia.<br>
+  4. Escribe una <strong>Carta de Agradecimiento</strong>.<br>
+  5. Finalmente, <strong>Imprime</strong> tu diario si lo deseas.<br><br>
+
+  <strong>📎 Botones principales:</strong><br>
+  📗 Portada – Comienza diseñando la portada de tu diario.<br>
+  📔 Contraportada – Diseña y agrega tus datos personales, un dibujo y mensaje especial.<br>
+  📝 Día 1 al Día 7 – Escribe y dibuja tus emociones de cada día.<br>
+  🤔 Reflexión – Piensa en lo que aprendiste durante el proceso.<br>
+  🙏 Agradecimientos – Escribe una carta de gratitud para ti.<br><br>
+
+  ✏️ Dibujo – Traza libremente con el lápiz.<br>
+  ⚫ Círculo / ⬛ Cuadro / 🔺 Triángulo – Sellos de formas básicas.<br>
+  🔤 Texto – Escribe frases, pensamientos o ideas.<br>
+  🖼️ Imagen – Sube fotos o ilustraciones.<br>
+  ✋ Mover – Ajusta la posición de los elementos.<br>
+  📏 Escalar – Cambia el tamaño de lo que agregaste.<br>
+  ↩️ Deshacer / ↪️ Rehacer – Corrige cambios.<br>
+  🗑️ Limpiar – Borra toda la página.<br>
+  🎨 Color – Selecciona el color del trazo o texto.<br>
+  📏 Grosor – Ajusta el grosor del lápiz.<br>
+  🔍 Zoom – Amplía o reduce el lienzo.<br>
+  🖨️ Imprimir – Guarda o imprime tu página como imagen.
+</p>
+
+    <div style="margin-bottom: 10px">
+      <button onclick="cambiarPagina('portada')">📗</button>
+      <button onclick="cambiarPagina('contraportada')">📔</button>
+      <button onclick="cambiarPagina('dia1')">📝1</button>
+      <button onclick="cambiarPagina('dia2')">📝2</button>
+      <button onclick="cambiarPagina('dia3')">📝3</button>
+      <button onclick="cambiarPagina('dia4')">📝4</button>
+      <button onclick="cambiarPagina('dia5')">📝5</button>
+      <button onclick="cambiarPagina('dia6')">📝6</button>
+      <button onclick="cambiarPagina('dia7')">📝7</button>
+      <button onclick="cambiarPagina('reflexion')">🤔</button>
+      <button onclick="cambiarPagina('agradecimientos')">🙏 </button>
+    </div>
+
+    <div>
+      <button onclick="setTool('pencil')">✏️</button>
+      <button onclick="setTool('circle')">⚫</button>
+      <button onclick="setTool('square')">⬛</button>
+      <button onclick="setTool('triangle')">🔺</button>
+      <button onclick="setTool('text')">🔤</button>
+      <button onclick="setTool('upload')">🖼️</button>
+      <button onclick="setTool('move')">✋</button>
+      <button onclick="setTool('resize')">📏</button>
+      <button onclick="undo()">↩️</button>
+      <button onclick="redo()">↪️</button>
+      <button onclick="clearCanvas()">🗑️</button>
+      <label style="color:#ffcc00; font-weight:bold;">Color: <input type="color" id="colorPicker" onchange="setColor(this.value)" /></label>
+      <label style="color:#ffcc00; font-weight:bold;">Grosor: <input type="range" id="grosor" min="1" max="10" value="2" onchange="setGrosor(this.value)" /></label>
+      <select id="zoomControl" onchange="controlZoom(this.value)">
+        <option value="1">🔍100%</option>
+        <option value="1.2">🔍+20%</option>
+        <option value="0.8">🔍-20%</option>
+      </select>
+      <button onclick="imprimirPagina()">🖨️</button>
+    </div>
+
+    <div id="canvas-container">
+      <canvas id="canvas" width="850" height="1100"></canvas>
+      <div id="piePagina" style="position:absolute; bottom:10px; left:0; right:0; text-align:center; font-family:'Georgia'; font-size:14px; color:#333;"></div>
+    </div>
+  </section>
+
+  <script>
+  let canvas = document.getElementById('canvas');
+  let ctx = canvas.getContext('2d');
+  let paginaActual = 'portada';
+  let tool = null;
+  let elements = [];
+  let history = [];
+  let redoHistory = [];
+  let activeElement = null;
+  let drawing = false;
+  let startX, startY;
+  let scale = 1;
+  let currentColor = '#000';
+  let lineWidth = 2;
+
+  window.onload = () => {
+    canvas.addEventListener('mousedown', onMouseDown);
+    canvas.addEventListener('mousemove', onMouseMove);
+    canvas.addEventListener('mouseup', onMouseUp);
+
+    canvas.addEventListener('touchstart', onTouchStart, { passive: false });
+    canvas.addEventListener('touchmove', onTouchMove, { passive: false });
+    canvas.addEventListener('touchend', onTouchEnd);
+
+    drawPage();
+  };
+
+  window.addEventListener("resize", () => drawPage());
+
+  function cambiarPagina(pag) {
+    paginaActual = pag;
+    elements = [];
+    history = [];
+    redoHistory = [];
+    activeElement = null;
+    drawPage();
+  }
+
+  function setTool(t) {
+    tool = t;
+    activeElement = null;
+    canvas.style.cursor = (t === 'move') ? 'grab' : 'default';
+
+    if (t === 'upload') uploadImage();
+    else if (t === 'text') {
+      const result = promptTextWithStyle();
+      if (!result) return;
+      elements.push({
+        type: 'text',
+        x: startX || 100,
+        y: startY || 100,
+        text: result.text,
+        font: result.fuente,
+        size: result.tamano,
+        color: currentColor
+      });
+      history.push([...elements]);
+      drawPage();
+    }
+  }
+
+  function setColor(c) { currentColor = c; }
+  function setGrosor(g) { lineWidth = parseInt(g); }
+  function controlZoom(z) { scale = parseFloat(z); drawPage(); }
+
+  function undo() {
+    if (history.length) {
+      redoHistory.push(history.pop());
+      elements = history.length ? [...history[history.length - 1]] : [];
+      drawPage();
+    }
+  }
+
+  function redo() {
+    if (redoHistory.length) {
+      let rest = redoHistory.pop();
+      history.push(rest);
+      elements = [...rest];
+      drawPage();
+    }
+  }
+
+  function clearCanvas() {
+    elements = [];
+    history = [];
+    redoHistory = [];
+    drawPage();
+  }
+
+  function onMouseDown(e) {
+    const r = canvas.getBoundingClientRect();
+    startX = (e.clientX - r.left) / scale;
+    startY = (e.clientY - r.top) / scale;
+
+    if (tool === 'pencil') {
+      drawing = true;
+      elements.push({
+        type: 'pencil',
+        points: [{ x: startX, y: startY }],
+        color: currentColor,
+        width: lineWidth
+      });
+    } else if (["circle", "square", "triangle"].includes(tool)) {
+      elements.push({ type: 'shape', shape: tool, x: startX, y: startY, size: 50, color: currentColor });
+      history.push([...elements]);
+      drawPage();
+    } else if (['move', 'resize'].includes(tool)) {
+      activeElement = [...elements].reverse().find(el => {
+        if (el.type === 'shape') {
+          return startX >= el.x - el.size && startX <= el.x + el.size && startY >= el.y - el.size && startY <= el.y + el.size;
+        } else if (el.type === 'text') {
+          return startX >= el.x && startX <= el.x + 100 && startY >= el.y - 30 && startY <= el.y;
+        } else if (el.type === 'image') {
+          return startX >= el.x && startX <= el.x + el.w && startY >= el.y && startY <= el.y + el.h;
+        }
+      });
+    }
+  }
+
+  function onMouseMove(e) {
+    if (!drawing && !activeElement) return;
+    const r = canvas.getBoundingClientRect();
+    const x = (e.clientX - r.left) / scale;
+    const y = (e.clientY - r.top) / scale;
+
+    if (drawing) {
+      const p = elements[elements.length - 1];
+      p.points.push({ x, y });
+      drawPage();
+    } else if (activeElement) {
+      if (tool === 'move') {
+        let dx = x - startX;
+        let dy = y - startY;
+        activeElement.x += dx;
+        activeElement.y += dy;
+        startX = x;
+        startY = y;
+      } else if (tool === 'resize') {
+        if (activeElement.type === 'shape') activeElement.size += x - startX;
+        else if (activeElement.type === 'text') activeElement.size += (x - startX) / 5;
+        else {
+          activeElement.w += x - startX;
+          activeElement.h += y - startY;
+        }
+        startX = x;
+        startY = y;
+      }
+      drawPage();
+    }
+  }
+
+  function onMouseUp() {
+    if (drawing || activeElement) history.push([...elements]);
+    drawing = false;
+    activeElement = null;
+  }
+
+  function onTouchStart(e) {
+    e.preventDefault();
+    const touch = e.touches[0];
+    onMouseDown({ clientX: touch.clientX, clientY: touch.clientY, preventDefault() {} });
+  }
+
+  function onTouchMove(e) {
+    e.preventDefault();
+    const touch = e.touches[0];
+    onMouseMove({ clientX: touch.clientX, clientY: touch.clientY });
+  }
+
+  function onTouchEnd(e) {
+    e.preventDefault();
+    onMouseUp();
+  }
+
+  function uploadImage() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.onchange = e => {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+      reader.onload = evt => {
+        const img = new Image();
+        img.onload = () => {
+          elements.push({ type: 'image', img, x: 100, y: 150, w: 200, h: 200 });
+          history.push([...elements]);
+          drawPage();
+        };
+        img.src = evt.target.result;
+      };
+      reader.readAsDataURL(file);
+    };
+    input.click();
+  }
+
+  function promptTextWithStyle() {
+    const text = prompt("Escribe tu texto:");
+    if (!text) return null;
+
+    const font = prompt("Selecciona la fuente:\n1: Comic Sans MS\n2: Georgia\n3: Arial", "1");
+    const fuentes = ["Comic Sans MS", "Georgia", "Arial"];
+    const fuente = fuentes[parseInt(font) - 1] || "Comic Sans MS";
+
+    const size = prompt("Selecciona tamaño de texto (px):\n16, 20, 24, 30, 36, 40", "20");
+    const tamano = parseInt(size) || 20;
+
+    return { text, fuente, tamano };
+  }
+
+  function drawPage() {
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.setTransform(scale, 0, 0, scale, 0, 0);
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = '#000';
+    ctx.font = '28px Georgia';
+    ctx.textAlign = 'center';
+    if (paginaActual.startsWith('dia')) {
+      ctx.fillText(paginaActual.replace('dia', 'Día '), canvas.width / 2, 60);
+      ctx.font = '16px Georgia';
+      ctx.textAlign = 'left';
+      ctx.fillText('Fecha: ' + new Date().toLocaleDateString(), 40, 100);
+      document.getElementById('piePagina').textContent = 'Página: ' + paginaActual.replace('dia', 'Día ');
+    } else {
+      let textos = {
+        'portada': 'Mi Diario Personal',
+        'contraportada': 'Mis datos personales:',
+        'agradecimientos': 'Carta de agradecimiento',
+        'reflexion': 'Reflexión sobre la semana'
+      };
+      ctx.font = '28px Comic Sans MS';
+      ctx.textAlign = 'center';
+      ctx.fillText(textos[paginaActual] || '', canvas.width / 2, 100);
+      document.getElementById('piePagina').textContent = 'Página: ' + paginaActual.charAt(0).toUpperCase() + paginaActual.slice(1);
+    }
+
+    for (let el of elements) {
+      ctx.save();
+      ctx.fillStyle = ctx.strokeStyle = el.color || '#000';
+      ctx.lineWidth = el.width || 2;
+      if (el.type === 'pencil') {
+        ctx.beginPath();
+        ctx.moveTo(el.points[0].x, el.points[0].y);
+        for (let p of el.points) ctx.lineTo(p.x, p.y);
+        ctx.stroke();
+      } else if (el.type === 'shape') {
+        if (el.shape === 'circle') {
+          ctx.beginPath();
+          ctx.arc(el.x, el.y, el.size, 0, 2 * Math.PI);
+          ctx.fill();
+        } else if (el.shape === 'square') {
+          ctx.fillRect(el.x - el.size, el.y - el.size, el.size * 2, el.size * 2);
+        } else if (el.shape === 'triangle') {
+          ctx.beginPath();
+          ctx.moveTo(el.x, el.y - el.size);
+          ctx.lineTo(el.x - el.size, el.y + el.size);
+          ctx.lineTo(el.x + el.size, el.y + el.size);
+          ctx.closePath();
+          ctx.fill();
+        }
+      } else if (el.type === 'text') {
+        ctx.font = `${el.size || 20}px ${el.font || 'Comic Sans MS'}`;
+        ctx.fillText(el.text, el.x, el.y);
+      } else if (el.type === 'image') {
+        ctx.drawImage(el.img, el.x, el.y, el.w, el.h);
+      }
+      ctx.restore();
+    }
+  }
+
+  function imprimirPagina() {
+    const dataUrl = canvas.toDataURL();
+    const ventana = window.open('', '_blank');
+    ventana.document.write('<html><head><title>Imprimir</title></head><body style="margin:0">');
+    ventana.document.write('<img src="' + dataUrl + '" style="width:100%">');
+    ventana.document.write('</body></html>');
+    ventana.document.close();
+    ventana.print();
+  }
+</script>
+
+  
+ <!-- Pie de página del Diario Emocional -->
+<style>
+  footer {
+    background-color: #000;
+    color: #ccc;
+    padding: 30px 20px;
+    font-size: 1rem;
+    text-align: center;
+    line-height: 1.8;
+    border-top: 2px solid #ff6f00;
+    margin-top: 40px;
+    font-family: 'Playfair Display', serif;
+  }
+
+  footer strong {
+    color: #fff;
+    font-weight: 700;
+  }
+
+  footer em {
+    color: #ffa726;
+    font-style: normal;
+    font-weight: 400;
+  }
+
+  footer a {
+    color: #4fc3f7;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  footer a:hover {
+    text-decoration: underline;
+  }
+
+  .contador-visitas {
+    margin-top: 25px;
+  }
+
+  .contador-visitas img {
+    max-width: 100px;
+    opacity: 0.9;
+  }
+</style>
+
+<footer>
+  © 2025 — Herramienta pedagógica del proyecto de investigación: <strong>*Emociones en el Aula*</strong><br>
+  Propuesta educativa y cultural creada por <strong>Yobana Orozco Benavides</strong>, pedagoga, artista integral y autora.<br><br>
+  Licencia: <em>Creative Commons Atribución-NoComercial 4.0 Internacional (CC BY-NC 4.0)</em><br>
+  Distribución autorizada bajo el modelo <strong>E-commerce 4.0 Internacional</strong><br>
+  Uso libre con fines educativos — <strong>prohibido uso comercial</strong>.<br><br>
+  Más información: <a href="https://yobanaorozcoartista.bio.link/" target="_blank" rel="noopener">yobanaorozcoartista.bio.link</a>
+</footer>
+
+</body>
+</html>
