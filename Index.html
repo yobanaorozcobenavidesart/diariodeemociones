@@ -65,22 +65,55 @@
     margin: 4px;
   }
 
-  button, select, input[type="color"], input[type="range"] {
-    font-size: 14px;
-    padding: 5px 8px;
-    background-color: #ffff00;
-    color: #111;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
+  .btn {
+  background-color: #000; /* fondo negro */
+  color: #fff; /* texto blanco */
+  padding: 12px 24px;
+  border: 2px solid #FFA500; /* borde naranja */
+  border-radius: 12px;
+  margin: 10px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px #FFA50066;
+}
 
-  button:hover, select:hover {
-    background-color: #e6b800;
-  }
+.btn:hover {
+  background-color: #111;
+  color: #FFA500;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #FFA500;
+}
+
+.opciones button {
+  background-color: #000;
+  color: #fff;
+  border: 2px solid #FFA500;
+  border-radius: 10px;
+  margin: 10px auto;
+  width: 80%;
+  max-width: 320px;
+  padding: 12px;
+  font-size: 1em;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 8px #FFA50033;
+}
+
+.opciones button:hover {
+  background-color: #111;
+  color: #FFA500;
+  box-shadow: 0 0 12px #FFA50099;
+}
+
+.opciones button.seleccionado {
+  background-color: #FFA500;
+  color: #000;
+  font-weight: bold;
+  box-shadow: 0 0 15px #FFA500;
+}
+
 </style>
-
-
 
 </head>
 <body>
@@ -442,61 +475,55 @@
     ventana.print();
   }
 </script>
+  
+  <section style="background-color: #111; color: #FFD700; padding: 40px 20px; text-align: left; font-family: 'Georgia', serif; max-width: 850px; margin: 0 auto; border-top: 2px solid #FFA500;">
+  <h2 style="color: #fff; text-align: center; font-size: 1.8em; margin-bottom: 20px;">Beneficios del Diario Emocional Creativo</h2>
+  <p style="font-size: 1em; line-height: 1.6; color: #fefefe;">
+    Este diario es más que una herramienta pedagógica: es un espacio integral de exploración y crecimiento personal. A través de cada página, el estudiante:
+  </p>
+  <ul style="list-style: none; padding-left: 0; font-size: 1em; line-height: 1.6; color: #fefefe;">
+    <li>🧠 <strong>Desarrolla su inteligencia emocional</strong> al identificar, expresar y reflexionar sobre sus emociones cotidianas.</li>
+    <li>🎨 <strong>Explora su creatividad artística</strong>, utilizando el dibujo libre, formas, colores y composición visual para representar su mundo interior.</li>
+    <li>✍️ <strong>Fortalece su competencia literaria</strong> al narrar vivencias, escribir reflexiones, expresar gratitud y construir relatos personales.</li>
+    <li>💻 <strong>Adquiere habilidades tecnológicas</strong> mediante el uso intuitivo de herramientas digitales para dibujar, editar, subir imágenes, escribir y guardar su progreso.</li>
+    <li>🧩 <strong>Vive un proceso educativo integral</strong> que une arte, emoción, escritura y tecnología, favoreciendo el autoconocimiento, la autonomía y la expresión auténtica.</li>
+  </ul>
+  <p style="font-style: italic; font-size: 1em; margin-top: 20px; color: #FFD700;">
+    Cada trazo, palabra o forma es un reflejo del mundo interno de quien crea. Este diario es una invitación a crecer desde el corazón, la mente y la imaginación. 💛✨
+  </p>
+</section>
+
 
   
- <!-- Pie de página del Diario Emocional -->
-<style>
-  footer {
-    background-color: #000;
-    color: #ccc;
-    padding: 30px 20px;
-    font-size: 1rem;
-    text-align: center;
-    line-height: 1.8;
-    border-top: 2px solid #ff6f00;
-    margin-top: 40px;
-    font-family: 'Playfair Display', serif;
-  }
+<footer style="
+  background-color: #000;
+  color: #FFD700;
+  text-align: center;
+  padding: 25px 15px;
+  font-family: 'Arial', sans-serif;
+  font-size: 1em;
+  border-top: 2px solid #FFD700;
+  line-height: 1.4;
+">
+  <p style="margin: 5px 0;">🌟 Parte del proyecto creativo en evolución <strong style="color: #fff;">“Emociones en el Aula”</strong></p>
+  <p style="margin: 5px 0;">🔧 Este proyecto se mejora constantemente con nuevas herramientas y experiencias reales.</p>
+  <p style="margin: 5px 0;">📘 Desarrollado con 💛 por <strong style="color: #fff;">Yobana Orozco Benavides</strong></p>
+  <p style="margin: 5px 0;">🔒 Uso educativo — <span style="color:#FFA500; font-weight: bold;">sin fines comerciales</span></p>
+  <p style="margin: 8px 0;">Más en: 
+    <a href="https://yobanaorozcoartista.bio.link/" target="_blank" style="color: #FFD700; text-decoration: underline; font-weight: bold;">
+      yobanaorozcoartista.bio.link
+    </a>
+  </p>
 
-  footer strong {
-    color: #fff;
-    font-weight: 700;
-  }
+  <!-- Imágenes insertadas -->
+  <div style="margin-top: 15px;">
+    <img src="https://i.postimg.cc/dqKj7LQQ/480702220-618041787505911-8280549859336367380-n.jpg" 
+         alt="Logo 1" 
+         style="width: 60px; height: auto; margin: 0 10px; border-radius: 8px; border: 1px solid #FFD700;">
+    <img src="https://i.postimg.cc/NfcBdfV4/418b1c0f-8d2a-463f-9cb1-271bd0abfd0e-1.png" 
+         alt="Logo 2" 
+         style="width: 60px; height: auto; margin: 0 10px; border-radius: 8px; border: 1px solid #FFD700;">
+  </div>
 
-  footer em {
-    color: #ffa726;
-    font-style: normal;
-    font-weight: 400;
-  }
-
-  footer a {
-    color: #4fc3f7;
-    text-decoration: none;
-    font-weight: 500;
-  }
-
-  footer a:hover {
-    text-decoration: underline;
-  }
-
-  .contador-visitas {
-    margin-top: 25px;
-  }
-
-  .contador-visitas img {
-    max-width: 100px;
-    opacity: 0.9;
-  }
-</style>
-
-<footer>
-  © 2025 — Herramienta pedagógica del proyecto de investigación: <strong>*Emociones en el Aula*</strong><br>
-  Propuesta educativa y cultural creada por <strong>Yobana Orozco Benavides</strong>, pedagoga, artista integral y autora.<br><br>
-  Licencia: <em>Creative Commons Atribución-NoComercial 4.0 Internacional (CC BY-NC 4.0)</em><br>
-  Distribución autorizada bajo el modelo <strong>E-commerce 4.0 Internacional</strong><br>
-  Uso libre con fines educativos — <strong>prohibido uso comercial</strong>.<br><br>
-  Más información: <a href="https://yobanaorozcoartista.bio.link/" target="_blank" rel="noopener">yobanaorozcoartista.bio.link</a>
+  <p style="margin-top: 12px; font-size: 0.8em; color: #888;">© 2025 - Todos los derechos reservados</p>
 </footer>
-
-</body>
-</html>
